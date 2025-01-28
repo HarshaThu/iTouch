@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct Image Test</title>
+    <style>
+        .image-container {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid red;
+        }
+        .test-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <h2>Direct Image Test:</h2>
+        <p>Testing image from root:</p>
+        <img src="/image.jpg" alt="Test from root" class="test-image">
+        <hr>
+        <p>Testing image from images folder:</p>
+        <img src="/images/image.jpg" alt="Test from images folder" class="test-image">
+        <hr>
+        <p>Testing with absolute URL:</p>
+        <img src="http://localhost:3000/image.jpg" alt="Test with absolute URL" class="test-image">
+    </div>
+</body>
+</html>

@@ -1,101 +1,148 @@
-import Image from "next/image";
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel"
+import { useAutoScroll } from "@/lib/use-auto-scroll"
+import Link from "next/link"
+import { useState } from "react"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [api, setApi] = useState<CarouselApi>()
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useAutoScroll(api)
+
+  const testimonials = [
+    {
+      name: "Sarah M.",
+      testimonial: "The most relaxing experience I've ever had. The ambiance and service were perfect.",
+      rating: 5
+    },
+    {
+      name: "James K.",
+      testimonial: "Professional service in a luxurious setting. Will definitely return!",
+      rating: 5
+    },
+    {
+      name: "Emily R.",
+      testimonial: "Exactly what I needed after a long week. The therapists are highly skilled.",
+      rating: 5
+    },
+    {
+      name: "Michael L.",
+      testimonial: "Outstanding service and attention to detail. A truly premium experience.",
+      rating: 5
+    },
+    {
+      name: "Lisa P.",
+      testimonial: "The perfect blend of relaxation and rejuvenation. Highly recommended!",
+      rating: 5
+    }
+  ]
+
+  const features = [
+    {
+      title: "Professional Masseuses",
+      description: "Our skilled therapists provide a truly relaxing experience"
+    },
+    {
+      title: "Private Setting",
+      description: "Discrete, comfortable, and elegant private rooms"
+    },
+    {
+      title: "Personalized Service",
+      description: "Each session is tailored to your comfort and preferences"
+    },
+    {
+      title: "Quality Products",
+      description: "Premium oils and lotions for the perfect experience"
+    }
+  ]
+
+  return (
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-36 bg-[url('/images/hero-image.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl font-josefin mb-6 font-bold text-white">Discover True Relaxation</h1>
+            <p className="text-xl text-gray-200 mb-8">
+              Experience the most <span className="font-bold">soothing and rejuvenating</span> massage treatments in a luxurious private setting.
+            </p>
+            <Button className="font-josefin text-lg" size="lg" asChild>
+              <Link href="/services">View Our Services</Link>
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-josefin text-center mb-12 font-bold">What Our Clients Say</h2>
+          <Carousel 
+            className="w-full max-w-5xl mx-auto" 
+            opts={{ 
+              align: "start",
+              loop: true,
+              skipSnaps: true,
+              dragFree: true
+            }}
+            setApi={setApi}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-primary/5 border-primary/20 h-full">
+                    <CardContent className="p-6">
+                      <div className="space-y-4">
+                        <p className="text-muted-foreground italic">&quot;{testimonial.testimonial}&quot;</p>
+                        <div className="font-josefin text-primary">{testimonial.name}</div>
+                        <div className="flex gap-1">
+                          {Array.from({ length: testimonial.rating }).map((_, i) => (
+                            <span key={i} className="text-primary">★</span>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-josefin text-center mb-12">Why Choose iTouch?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <Card key={index} className="text-center bg-background border-primary/20">
+                <CardContent className="pt-6">
+                  <h3 className="font-josefin text-xl mb-3 font-bold">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-primary/5 py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-josefin mb-6 font-bold">Ready for Your Session?</h2>
+          <p className="text-xl text-muted-foreground mb-8">
+            Choose from our range of relaxing treatments <span className="font-bold">starting from $60</span>.
+          </p>
+          <Button className="font-josefin" size="lg" asChild>
+            <Link href="/services">Book Now</Link>
+          </Button>
+        </div>
+      </section>
+    </main>
+  )
 }
