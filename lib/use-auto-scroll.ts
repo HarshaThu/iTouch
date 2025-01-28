@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { type CarouselApi } from "@/components/ui/carousel"
 
 export function useAutoScroll(api: CarouselApi | null) {
-  const [_, setAutoScroll] = useState(0)
+  const [, setAutoScroll] = useState(0)
 
   useEffect(() => {
     if (!api) return
